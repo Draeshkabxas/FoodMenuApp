@@ -1,4 +1,4 @@
-package com.example.foodmenu
+package com.example.foodmenu.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.foodmenu.R
 import com.example.foodmenu.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
             //Give the action bar the correct title for the current screen (this uses the fragment label)
             appBarConfiguration = AppBarConfiguration(
-                setOf(R.id.foodXFragment, R.id.settingsXFragment)
+                setOf(R.id.foodFragment, R.id.settingsXFragment)
             )
             //Connects the action bar with the nav controller
             setupActionBarWithNavController(navController, appBarConfiguration)

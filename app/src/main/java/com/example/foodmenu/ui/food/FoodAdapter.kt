@@ -1,4 +1,4 @@
-package com.example.foodmenu
+package com.example.foodmenu.ui.food
 
 import android.view.LayoutInflater
 
@@ -6,17 +6,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodmenu.model.FoodItem
 
 import com.example.foodmenu.databinding.FoodListItemBinding
-import com.example.foodmenu.model.SettingsStorage
+import com.example.foodmenu.model.settings.SettingsStorageImpl
 
 
 /**
  * Created by Taha Ben Ashur (https://github.com/tahaak67) on 02,Feb,2023
  */
 
-class FoodAdapter : ListAdapter<FoodItem,RecyclerView.ViewHolder>(DIFF_CALLBACK) {
+class FoodAdapter(var settingsStorage:SettingsStorageImpl,val onItemClick:(position:Int)->Unit) : ListAdapter<FoodItem,RecyclerView.ViewHolder>(
+    DIFF_CALLBACK
+) {
+
     companion object{
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FoodItem>() {
 
@@ -48,11 +50,15 @@ class FoodAdapter : ListAdapter<FoodItem,RecyclerView.ViewHolder>(DIFF_CALLBACK)
 
     inner class ViewHolder(private val itemBinding: FoodListItemBinding):
         RecyclerView.ViewHolder(itemBinding.root) {
-            fun bind(item:FoodItem,position: Int){
+            fun bind(item: FoodItem, position: Int){
 
-                var settingsStorage= SettingsStorage(itemBinding.container.context)
                 itemBinding.foodItemName.text = item.name
                 itemBinding.foodItemName.textSize = settingsStorage.getTextSize().toFloat()
+
+                itemBinding.container.setOnClickListener {
+                    onItemClick(position)
+                }
+
                 itemBinding.foodItemImage.setImageResource(item.imageUrl)
             }
     }

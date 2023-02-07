@@ -6,7 +6,7 @@
         android:icon="@drawable/settings"
         android:title="Settings" />
     <item
-        android:id="@+id/food_nav"
+        android:id="@+id/food_list_nav"
         android:icon="@drawable/food"
         android:title="Food" />
 </menu>

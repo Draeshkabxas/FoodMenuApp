@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/settingsXFragment"
-        android:name="com.example.foodmenu.SettingsFragment"
+        android:name="com.example.foodmenu.ui.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
